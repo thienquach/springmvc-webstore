@@ -3,4 +3,18 @@
   <groupId>com.webstore</groupId>
   <artifactId>webstore-common</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<spring.version>4.0.3.RELEASE</spring.version>
+  </properties>
+  
+  <dependencies>
+  	
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	
+  </dependencies>
 </project>

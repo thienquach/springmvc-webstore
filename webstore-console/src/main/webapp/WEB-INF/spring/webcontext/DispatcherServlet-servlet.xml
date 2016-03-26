@@ -12,7 +12,7 @@
     <mvc:annotation-driven />
     
     
-    <context:component-scan base-package="com.webstore.controller" />
+    <context:component-scan base-package="com.webstore.controller, com.webstore.domain.repository.impl" />
   
 	<!-- Resolve responses from controller, e.g. 'welcome' -> /WEB-INF/views/welcome.jsp -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
