@@ -7,15 +7,40 @@
   
   <properties>
   	<spring-webmvc.version>4.0.3.RELEASE</spring-webmvc.version>
+  	<jstl.version>1.2</jstl.version>
+  	<servlet-api.version>3.1.0</servlet-api.version>
+  	
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   
   <dependencies>
   
+  	<!-- Spring dependencies -->
+  	
+  	<!-- Spring WebMVC provides libraries for creating web -->
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
   		<version>${spring-webmvc.version}</version>
   		<scope>compile</scope>
   	</dependency>
+  	
+  	<!-- JSTL provides JSP tags-->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>${jstl.version}</version>
+  		<scope>compile</scope>
+  	</dependency>
+  	
+  	<!-- Servlet API, this no need to be compile -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>${servlet-api.version}</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
   </dependencies>
 </project>
