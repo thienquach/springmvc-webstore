@@ -1,10 +1,10 @@
-package com.webstore.domain.repository;
+package com.webstore.service;
 
 import java.util.List;
 
 import com.webstore.domain.Product;
 
-public interface ProductRepository {
+public interface ProductService {
 
 	List<Product> getAllProducts();
 	Product getProductByCode(String code);

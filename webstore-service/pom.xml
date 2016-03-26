@@ -3,4 +3,12 @@
   <groupId>com.webstore</groupId>
   <artifactId>webstore-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.webstore</groupId>
+  		<artifactId>webstore-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
