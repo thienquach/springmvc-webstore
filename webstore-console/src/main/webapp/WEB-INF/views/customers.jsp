@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,27 +12,21 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Products</h1>
-				<p>All available products in our store</p>
+				<h1>Customers</h1>
+				<p>All customers of our store</p>
 			</div>
 		</div>
 	</section>
 
 	<section class="container">
 		<div class="row">
-			<c:forEach items="${products }" var="product">
+			<c:forEach items="${customers }" var="customer">
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px;">
 					<div class="thumbnail">
 						<div class="caption">
-							<h3>${product.name }</h3>
-							<p>${product.description }</p>
-							<p>${product.unitPrice }USD</p>
-							<p>Available ${product.unitsInStock } units in stock</p>
-							<p>
-								<a href="<spring:url value="/products/product?code=${product.code }"/>" class="btn btn-primary">
-									<span class="glyphicon-info-sign glyphicon"/></span> Details
-								</a>
-							</p>
+							<h3>${customer.id }</h3>
+							<p>${customer.name }</p>
+							<p>${customer.address }</p>
 						</div>
 					</div>
 
