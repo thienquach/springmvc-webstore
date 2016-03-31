@@ -1,12 +1,24 @@
 package com.webstore.domain;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Product {
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+
+import org.springframework.util.Assert;
+
+@Entity
+public class Product extends AbstractEntity {
 	
-	private int id;
 	private String code;
+	
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private BigDecimal unitPrice;
 	private String description;
 	private String manufacturer;
@@ -16,23 +28,30 @@ public class Product {
 	private boolean discontinued;
 	private String condition;
 	
-	public Product(){
-		super();
-	}
+	@ElementCollection
+	private Map<String, String> attributes = new HashMap<String, String>();
 	
+
+	/**
+	 * Creates a new {@link Product} from the given name and description.
+	 * 
+	 * @param code
+	 * @param name must not be {@literal null} or empty.
+	 * @param unitPrice must not be {@literal null} or less than or equal to zero.
+	 */
 	public Product(String code, String name, BigDecimal unitPrice){
+		Assert.hasText(name, "Name must not be null or empty");
+		Assert.isTrue(BigDecimal.ZERO.compareTo(unitPrice) < 0, "Price must be greater than zero");
 		this.code = code;
 		this.name = name;
 		this.unitPrice = unitPrice;
 	}
-
-	public int getId() {
-		return id;
+	
+	public Product(String name, BigDecimal unitPrice){
+		this(null, name, unitPrice);
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
+	protected Product(){}
 
 	public String getCode() {
 		return code;
@@ -113,6 +132,32 @@ public class Product {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+	
+	
+
+	public Map<String, String> getAttributes() {
+		return Collections.unmodifiableMap(attributes);
+	}
+
+	public void setAttributes(Map<String, String> attributes) {
+		this.attributes = attributes;
+	}
+	
+	/**
+	 * Sets the attribute with the given key to the given value.
+	 * 
+	 * @param key must not be {@literal null} or empty.
+	 * @param value
+	 */
+	public void addAttribute(String key, String value){
+		Assert.hasText(key);
+		
+		if(value == null){
+			this.attributes.remove(key);
+		}else{
+			this.attributes.put(key, value);
+		}
+	}
 
 	@Override
 	public int hashCode() {
@@ -141,11 +186,14 @@ public class Product {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Product [id=").append(id).append(", code=")
-				.append(code).append(", name=").append(name).append("]");
-		return builder.toString();
+		return "Product [code=" + code + ", name=" + name + ", unitPrice=" + unitPrice + ", description=" + description
+				+ ", manufacturer=" + manufacturer + ", category=" + category + ", unitsInStock=" + unitsInStock
+				+ ", unitsInOrder=" + unitsInOrder + ", discontinued=" + discontinued + ", condition=" + condition
+				+ ", attributes=" + attributes + "]";
 	}
+
+	
+
 	
 	
 	
