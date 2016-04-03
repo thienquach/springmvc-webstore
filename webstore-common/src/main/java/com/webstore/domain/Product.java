@@ -51,7 +51,7 @@ public class Product extends AbstractEntity {
 		this(null, name, unitPrice);
 	}
 	
-	protected Product(){}
+	public Product(){}
 
 	public String getCode() {
 		return code;
