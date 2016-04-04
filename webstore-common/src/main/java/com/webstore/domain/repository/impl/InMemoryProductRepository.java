@@ -111,7 +111,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
 	@Override
 	public void addProduct(Product product) {
-		// TODO Auto-generated method stub
+		listOfProducts.add(product);
 		
 	}
 	

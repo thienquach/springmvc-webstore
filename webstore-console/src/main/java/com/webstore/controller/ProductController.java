@@ -6,6 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,6 +67,11 @@ public class ProductController {
 		return "product";
 	}
 	
+	@InitBinder
+	public void initialiseBinder(WebDataBinder binder){
+		binder.setDisallowedFields("unitsInOrder", "discontinued");
+	}
+	
 	@RequestMapping(value="/add", method= RequestMethod.GET)
 	public String getAddNewProductForm(Model model){
 		Product newProduct = new Product();
@@ -71,8 +80,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct){
-		System.out.println("Add");
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result){
+		//Check if the FormBean contains disallowed fields from WebDataBinder
+		String[] suppressFields = result.getSuppressedFields();
+		if(suppressFields.length > 0){
+			throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressFields));
+		}
 		productService.addProduct(newProduct);
 		return "redirect:/products";
 	}
