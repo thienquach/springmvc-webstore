@@ -76,7 +76,8 @@ public class ProductController {
 	public String getAddNewProductForm(Model model){
 		Product newProduct = new Product();
 		model.addAttribute("newProduct", newProduct);
-		return "addProduct";
+		model.addAttribute("products", productService.getAllProducts());
+		return "admin/addProduct";
 	}
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
@@ -87,7 +88,7 @@ public class ProductController {
 			throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressFields));
 		}
 		productService.addProduct(newProduct);
-		return "redirect:/products";
+		return "redirect:/products/add";
 	}
 
 }
