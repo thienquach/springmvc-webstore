@@ -64,45 +64,45 @@
 					<div class="modal-body">
 						<!-- Product Code -->
 						<div class="form-group">
-							<label class="control-label col-lg-2 col-md-3 col-sm-3 "
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 "
 								for="code"> Product Code </label>
-							<div class="col-lg-10 col-md-9 col-sm-9 ">
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<form:input id="code" path="code" type="text"
 									class="form-control" />
 							</div>
 						</div>
 						<!-- Product Name -->
 						<div class="form-group">
-							<label class="control-label col-lg-2 col-md-3 col-sm-3 "
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 "
 								for="name"> Product Name </label>
-							<div class="col-lg-10 col-md-9 col-sm-9 ">
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<form:input id="name" path="name" type="text"
 									class="form-control" />
 							</div>
 						</div>
 						<!-- Unit Price -->
 						<div class="form-group">
-							<label class="control-label col-lg-2 col-md-3 col-sm-3 "
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 "
 								for="unitPrice"> Unit Price </label>
-							<div class="col-lg-10 col-md-9 col-sm-9 ">
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<form:input id="unitPrice" path="unitPrice" type="text"
 									class="form-control" />
 							</div>
 						</div>
 						<!-- Description -->
 						<div class="form-group">
-							<label class="control-label col-lg-2 col-md-3 col-sm-3 "
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 "
 								for="description"> Description </label>
-							<div class="col-lg-10 col-md-9 col-sm-9 ">
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<form:textarea id="description" path="description" rows="2"
 									class="form-control" />
 							</div>
 						</div>
 						<!-- Condition -->
 						<div class="form-group">
-							<label class="control-label col-lg-2 col-md-3 col-sm-3 ">
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 ">
 								Status </label>
-							<div class="col-lg-10 col-md-9 col-sm-9 ">
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<label class="radio-inline"> <form:radiobutton
 										path="status" value="New" />New
 								</label> <label class="radio-inline"> <form:radiobutton
