@@ -101,14 +101,14 @@
 						<!-- Condition -->
 						<div class="form-group">
 							<label class="control-label col-lg-2 col-md-3 col-sm-3 ">
-								Condition </label>
+								Status </label>
 							<div class="col-lg-10 col-md-9 col-sm-9 ">
 								<label class="radio-inline"> <form:radiobutton
-										path="condition" value="New" />New
+										path="status" value="New" />New
 								</label> <label class="radio-inline"> <form:radiobutton
-										path="condition" value="Old" />Old
+										path="status" value="Old" />Old
 								</label> <label class="radio-inline"> <form:radiobutton
-										path="condition" value="Refurbished" />Refurbished
+										path="status" value="Refurbished" />Refurbished
 								</label>
 							</div>
 						</div>

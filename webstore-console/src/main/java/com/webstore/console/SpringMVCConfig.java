@@ -11,11 +11,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.webstore.common.BaseSpringConfig;
+import com.webstore.common.SpringDataConfig;
 import com.webstore.common.SpringJPAConfig;
 
 
-@Import(value = { SpringJPAConfig.class, BaseSpringConfig.class })
+@Import(value = { SpringJPAConfig.class, SpringDataConfig.class })
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.webstore.console.controller", "com.webstore.service.impl"})
 @Configuration

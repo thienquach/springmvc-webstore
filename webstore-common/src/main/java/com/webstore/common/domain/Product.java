@@ -26,7 +26,7 @@ public class Product extends AbstractEntity {
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;
-	private String condition;
+	private String status;
 	
 	@ElementCollection
 	private Map<String, String> attributes = new HashMap<String, String>();
@@ -125,12 +125,12 @@ public class Product extends AbstractEntity {
 		this.discontinued = discontinued;
 	}
 
-	public String getCondition() {
-		return condition;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setStatus(String condition) {
+		this.status = condition;
 	}
 	
 	
@@ -188,7 +188,7 @@ public class Product extends AbstractEntity {
 	public String toString() {
 		return "Product [code=" + code + ", name=" + name + ", unitPrice=" + unitPrice + ", description=" + description
 				+ ", manufacturer=" + manufacturer + ", category=" + category + ", unitsInStock=" + unitsInStock
-				+ ", unitsInOrder=" + unitsInOrder + ", discontinued=" + discontinued + ", condition=" + condition
+				+ ", unitsInOrder=" + unitsInOrder + ", discontinued=" + discontinued + ", condition=" + status
 				+ ", attributes=" + attributes + "]";
 	}
 

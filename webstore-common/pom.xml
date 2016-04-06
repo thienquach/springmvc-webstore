@@ -55,7 +55,8 @@
 			<version>4.1.9.Final</version>
 			<scope>runtime</scope>
 		</dependency>
-
+		
+		<!-- QueryDSL -->
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-collections</artifactId>
@@ -68,12 +69,19 @@
 			<version>${querydsl.version}</version>
 		</dependency>
 		
-		<!-- HSQL -->
+		<!-- DataSource (HikariCP) -->
 		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.2.9</version>
-			<scope>runtime</scope>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP-java6</artifactId>
+			<version>2.3.9</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- MySQL Connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
 		</dependency>
 
 	</dependencies>
