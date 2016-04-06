@@ -25,7 +25,7 @@
 					<div class="thumbnail">
 						<div class="caption">
 							<h3>${product.name }</h3>
-							<p>${product.description }</p>
+							<p>${product.category.name }</p>
 							<p>${product.unitPrice }USD</p>
 							<p>Available ${product.unitsInStock } units in stock</p>
 							<p>

@@ -19,6 +19,4 @@
 	  <property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- Enable Spring Data Web Support -->
-	<import resource="com.webstore.common.SpringJPAConfig" />
 </beans>

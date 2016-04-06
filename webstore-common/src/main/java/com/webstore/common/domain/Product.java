@@ -8,15 +8,16 @@ import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.util.Assert;
 
 @Entity
 public class Product extends AbstractEntity {
-	
+
 	private String code;
-	
+
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
@@ -24,36 +25,40 @@ public class Product extends AbstractEntity {
 	private String description;
 	private String manufacturer;
 	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String status;
-	
+
 	@ElementCollection
 	private Map<String, String> attributes = new HashMap<String, String>();
-	
 
 	/**
 	 * Creates a new {@link Product} from the given name and description.
 	 * 
 	 * @param code
-	 * @param name must not be {@literal null} or empty.
-	 * @param unitPrice must not be {@literal null} or less than or equal to zero.
+	 * @param name
+	 *            must not be {@literal null} or empty.
+	 * @param unitPrice
+	 *            must not be {@literal null} or less than or equal to zero.
 	 */
-	public Product(String code, String name, BigDecimal unitPrice){
+	public Product(String code, String name, BigDecimal unitPrice) {
 		Assert.hasText(name, "Name must not be null or empty");
-		Assert.isTrue(BigDecimal.ZERO.compareTo(unitPrice) < 0, "Price must be greater than zero");
+		Assert.isTrue(BigDecimal.ZERO.compareTo(unitPrice) < 0,
+				"Price must be greater than zero");
 		this.code = code;
 		this.name = name;
 		this.unitPrice = unitPrice;
 	}
-	
-	public Product(String name, BigDecimal unitPrice){
+
+	public Product(String name, BigDecimal unitPrice) {
 		this(null, name, unitPrice);
 	}
-	
-	public Product(){}
+
+	public Product() {
+	}
 
 	public String getCode() {
 		return code;
@@ -134,8 +139,6 @@ public class Product extends AbstractEntity {
 	public void setStatus(String condition) {
 		this.status = condition;
 	}
-	
-	
 
 	public Map<String, String> getAttributes() {
 		return Collections.unmodifiableMap(attributes);
@@ -144,34 +147,32 @@ public class Product extends AbstractEntity {
 	public void setAttributes(Map<String, String> attributes) {
 		this.attributes = attributes;
 	}
-	
+
 	/**
 	 * Sets the attribute with the given key to the given value.
 	 * 
-	 * @param key must not be {@literal null} or empty.
+	 * @param key
+	 *            must not be {@literal null} or empty.
 	 * @param value
 	 */
-	public void addAttribute(String key, String value){
+	public void addAttribute(String key, String value) {
 		Assert.hasText(key);
-		
-		if(value == null){
+
+		if (value == null) {
 			this.attributes.remove(key);
-		}else{
+		} else {
 			this.attributes.put(key, value);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "Product [code=" + code + ", name=" + name + ", unitPrice=" + unitPrice + ", description=" + description
-				+ ", manufacturer=" + manufacturer + ", category=" + category + ", unitsInStock=" + unitsInStock
-				+ ", unitsInOrder=" + unitsInOrder + ", discontinued=" + discontinued + ", condition=" + status
-				+ ", attributes=" + attributes + "]";
+		return "Product [code=" + code + ", name=" + name + ", unitPrice="
+				+ unitPrice + ", description=" + description
+				+ ", manufacturer=" + manufacturer + ", category=" + category
+				+ ", unitsInStock=" + unitsInStock + ", unitsInOrder="
+				+ unitsInOrder + ", discontinued=" + discontinued
+				+ ", condition=" + status + ", attributes=" + attributes + "]";
 	}
 
-	
-
-	
-	
-	
 }
