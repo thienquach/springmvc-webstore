@@ -10,13 +10,15 @@
     <!-- Tell Spring MVC to configure the DefaultAnnotationHandlerMapping, 
     AnnotationMethodHandlerAdapter, and ExceptionHandlerExceptionResolver beans -->
     <mvc:annotation-driven enable-matrix-variables="true"/>
-    
-    <context:component-scan base-package="com.webstore.controller, com.webstore.domain.repository.impl, com.webstore.service.impl" />
+  
+    <context:component-scan base-package="com.webstore.controller, com.webstore.common.repository.impl, com.webstore.common.repository.jpa, com.webstore.common.domain, com.webstore.service.impl" />
   
 	<!-- Resolve responses from controller, e.g. 'welcome' -> /WEB-INF/views/welcome.jsp -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	  <property name="prefix" value="/WEB-INF/views/" />
 	  <property name="suffix" value=".jsp" />
 	</bean>
-
+	
+	<!-- Enable Spring Data Web Support -->
+	<import resource="com.webstore.common.SpringJPAConfig" />
 </beans>

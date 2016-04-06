@@ -2,7 +2,7 @@ package com.webstore.service;
 
 import java.util.List;
 
-import com.webstore.domain.Customer;
+import com.webstore.common.domain.Customer;
 
 public interface CustomerService {
 

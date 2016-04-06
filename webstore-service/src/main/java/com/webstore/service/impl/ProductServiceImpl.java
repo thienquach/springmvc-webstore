@@ -5,43 +5,61 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.webstore.domain.Product;
-import com.webstore.domain.repository.ProductRepository;
+import com.webstore.common.domain.Product;
+import com.webstore.common.repository.jpa.ProductJPARepository;
 import com.webstore.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductJPARepository productRepository;
 	
 	
-	public List<Product> getAllProducts() {
-		return productRepository.getAllProducts();
+	public List<Product> findAll() {
+		return (List<Product>) productRepository.findAll();
 	}
 
-	public Product getProductByCode(String code) {
-		return productRepository.getProductByCode(code);
+	public Product findByCode(String code) {
+		return productRepository.findByCode(code);
 	}
 
-	public List<Product> getProductsByCategory(String category) {
-		return productRepository.getProductByCategory(category);
+	public Page<Product> findByCategory(String category, Pageable pageable) {
+//		Pageable pageable = new PageRequest(0, 10, Direction.ASC, "name");
+		return productRepository.findByCategory(category, pageable);
 	}
 
 	public Set<Product> getProductsByFilter(
 			Map<String, List<String>> filterParams) {
-		return productRepository.getProductsByFilter(filterParams);
+		return (Set<Product>) productRepository.findAll();
 	}
 
-	public List<Product> getProductsByManufacturer(String manufacturer) {
-		return productRepository.getProductsByManufacturer(manufacturer);
+	public Page<Product> findByManufacturer(String manufacturer, Pageable pageable) {
+//		Pageable pageable = new PageRequest(0, 10, Direction.ASC, "name");
+		return productRepository.findByManufacturer(manufacturer, pageable);
 	}
 
 	@Override
 	public void addProduct(Product product) {
-		productRepository.addProduct(product);
+		productRepository.save(product);
+	}
+
+	@Override
+	public List<Product> findByCategory(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> findByManufacturer(String manufacturer) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

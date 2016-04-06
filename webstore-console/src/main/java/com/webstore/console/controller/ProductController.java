@@ -1,4 +1,4 @@
-package com.webstore.controller;
+package com.webstore.console.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.webstore.domain.Product;
+import com.webstore.common.domain.Product;
 import com.webstore.service.ProductService;
 
 @Controller
@@ -29,14 +29,14 @@ public class ProductController {
 
 	@RequestMapping
 	public String list(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("products", productService.findAll());
 
 		return "products";
 	}
 
 	@RequestMapping("/all")
 	public String allProducts(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("products", productService.findAll());
 
 		return "products";
 	}
@@ -45,7 +45,7 @@ public class ProductController {
 	public String getProductsByCategory(Model model,
 			@PathVariable String category) {
 		model.addAttribute("products",
-				productService.getProductsByCategory(category));
+				productService.findByCategory(category));
 
 		return "products";
 	}
@@ -62,7 +62,7 @@ public class ProductController {
 
 	@RequestMapping("/product")
 	public String getProductByCode(@RequestParam String code, Model model) {
-		model.addAttribute("product", productService.getProductByCode(code));
+		model.addAttribute("product", productService.findByCode(code));
 
 		return "product";
 	}
@@ -76,7 +76,7 @@ public class ProductController {
 	public String getAddNewProductForm(Model model){
 		Product newProduct = new Product();
 		model.addAttribute("newProduct", newProduct);
-		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("products", productService.findAll());
 		return "admin/addProduct";
 	}
 	

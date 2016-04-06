@@ -1,4 +1,4 @@
-package com.webstore.domain.repository.impl;
+package com.webstore.common.repository.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
-import com.webstore.domain.Product;
-import com.webstore.domain.repository.ProductRepository;
+import com.webstore.common.domain.Product;
+import com.webstore.common.repository.ProductRepository;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
@@ -114,5 +114,5 @@ public class InMemoryProductRepository implements ProductRepository {
 		listOfProducts.add(product);
 		
 	}
-	
+
 }

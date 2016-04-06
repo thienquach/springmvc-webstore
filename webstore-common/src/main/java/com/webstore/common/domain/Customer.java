@@ -1,4 +1,4 @@
-package com.webstore.domain;
+package com.webstore.common.domain;
 
 import java.util.Collections;
 import java.util.Set;

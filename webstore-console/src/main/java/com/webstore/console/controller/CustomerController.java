@@ -1,4 +1,4 @@
-package com.webstore.controller;
+package com.webstore.console.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +10,12 @@ import com.webstore.service.CustomerService;
 @Controller
 public class CustomerController {
 	
-	@Autowired
-	private CustomerService CustomerService;
+//	@Autowired
+//	private CustomerService CustomerService;
 
 	@RequestMapping("/customers")
 	private String list(Model model){
-		model.addAttribute("customers", CustomerService.getAllCustomers());
+//		model.addAttribute("customers", CustomerService.getAllCustomers());
 		
 		return "customers";
 	}

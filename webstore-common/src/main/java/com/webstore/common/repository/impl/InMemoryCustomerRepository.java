@@ -1,12 +1,12 @@
-package com.webstore.domain.repository.impl;
+package com.webstore.common.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.webstore.domain.Customer;
-import com.webstore.domain.repository.CustomerRepository;
+import com.webstore.common.domain.Customer;
+import com.webstore.common.repository.CustomerRepository;
 
 @Repository
 public class InMemoryCustomerRepository implements CustomerRepository {

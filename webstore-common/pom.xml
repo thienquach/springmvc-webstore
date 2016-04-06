@@ -67,6 +67,14 @@
 			<artifactId>querydsl-core</artifactId>
 			<version>${querydsl.version}</version>
 		</dependency>
+		
+		<!-- HSQL -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.9</version>
+			<scope>runtime</scope>
+		</dependency>
 
 	</dependencies>
 	

@@ -1,4 +1,4 @@
-package com.webstore.controller;
+package com.webstore.console.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

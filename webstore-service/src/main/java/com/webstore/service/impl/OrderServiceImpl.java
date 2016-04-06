@@ -3,8 +3,8 @@ package com.webstore.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webstore.domain.Product;
-import com.webstore.domain.repository.ProductRepository;
+import com.webstore.common.domain.Product;
+import com.webstore.common.repository.ProductRepository;
 import com.webstore.service.OrderService;
 
 @Service

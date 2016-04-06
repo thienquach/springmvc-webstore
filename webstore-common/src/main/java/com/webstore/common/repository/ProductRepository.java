@@ -1,10 +1,10 @@
-package com.webstore.domain.repository;
+package com.webstore.common.repository;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.webstore.domain.Product;
+import com.webstore.common.domain.Product;
 
 public interface ProductRepository {
 
