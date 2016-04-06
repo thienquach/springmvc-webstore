@@ -36,7 +36,7 @@
 			<tbody>
 				<c:forEach items="${products}" var="product" varStatus="status">
 					<tr>
-						<td>${status.index + 1 }</td>
+						<td>${product.id }</td>
 						<td>${product.code }</td>
 						<td>${product.name }</td>
 						<td>${product.unitPrice }</td>

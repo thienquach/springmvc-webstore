@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import org.springframework.util.Assert;
 
@@ -22,7 +23,8 @@ public class Product extends AbstractEntity {
 	private BigDecimal unitPrice;
 	private String description;
 	private String manufacturer;
-	private String category;
+	@ManyToOne
+	private Category category;
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;
@@ -93,11 +95,11 @@ public class Product extends AbstractEntity {
 		this.manufacturer = manufacturer;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
@@ -157,31 +159,6 @@ public class Product extends AbstractEntity {
 		}else{
 			this.attributes.put(key, value);
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
-		return true;
 	}
 
 	@Override
