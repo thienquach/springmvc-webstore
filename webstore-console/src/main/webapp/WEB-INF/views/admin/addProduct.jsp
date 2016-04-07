@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;	charset=ISO-8859-1">
@@ -29,6 +30,7 @@
 					<th>#</th>
 					<th>Product Code</th>
 					<th>Product Name</th>
+					<th>Category</th>
 					<th>Unit Price</th>
 					<th>Description</th>
 				</tr>
@@ -39,6 +41,7 @@
 						<td>${product.id }</td>
 						<td>${product.code }</td>
 						<td>${product.name }</td>
+						<td>${product.category.name }</td>
 						<td>${product.unitPrice }</td>
 						<td>${product.description }</td>
 					</tr>
@@ -69,6 +72,19 @@
 							<div class="col-lg-9 col-md-8 col-sm-8 ">
 								<form:input id="code" path="code" type="text"
 									class="form-control" />
+							</div>
+						</div>
+						<!-- Product Category -->
+						<div class="form-group">
+							<label class="control-label col-lg-3 col-md-4 col-sm-4 "
+								for="category"> Category </label>
+							<div class="col-lg-9 col-md-8 col-sm-8 ">
+								
+								<form:select  id="category" path="category"
+									class="form-control" >
+									<form:options items="${categories }" itemLabel="name" itemValue="id" />
+										
+								</form:select>
 							</div>
 						</div>
 						<!-- Product Name -->

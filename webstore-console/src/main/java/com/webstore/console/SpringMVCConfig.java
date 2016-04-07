@@ -17,7 +17,7 @@ import com.webstore.common.SpringJPAConfig;
 
 @Import(value = { SpringJPAConfig.class, SpringDataConfig.class })
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.webstore.console.controller", "com.webstore.service.impl"})
+@ComponentScan(basePackages = {"com.webstore.console.controller", "com.webstore.service.impl", "com.webstore.console.editor"})
 @Configuration
 public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 

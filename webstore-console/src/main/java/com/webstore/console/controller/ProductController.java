@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webstore.common.domain.Category;
 import com.webstore.common.domain.Product;
+import com.webstore.console.editor.CategoryEditor;
+import com.webstore.service.CategoryService;
 import com.webstore.service.ProductService;
 
 @Controller
@@ -26,6 +29,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CategoryService categoryService;
 
 	@RequestMapping
 	public String list(Model model) {
@@ -70,6 +75,8 @@ public class ProductController {
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder){
 		binder.setDisallowedFields("unitsInOrder", "discontinued");
+		binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
+		
 	}
 	
 	@RequestMapping(value="/add", method= RequestMethod.GET)
@@ -77,6 +84,7 @@ public class ProductController {
 		Product newProduct = new Product();
 		model.addAttribute("newProduct", newProduct);
 		model.addAttribute("products", productService.findAll());
+		model.addAttribute("categories", categoryService.findAll());
 		return "admin/addProduct";
 	}
 	
