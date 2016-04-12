@@ -1,6 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<c:url var="firstUrl" value="/products/add?page=1"/>
+<c:url var="lastUrl" value="/products/add?page=${productPage.totalPages }"/>
+<c:url var="prevUrl" value="/products/add?page=${currentIndex - 1 }"/>
+<c:url var="nextUrl" value="/products/add?page=${currentIndex + 1 }"/>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;	charset=ISO-8859-1">
@@ -20,6 +26,41 @@
 
 
 	<section class="container">
+		<nav>
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${currentIndex == 1 }">
+						<li class="disabled"><a href="#">&laquo;</a>
+						<li class="disabled"><a href="#">&lt;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${firstUrl}">&laquo;</a></li>
+						<li><a href="${prevUrl}">&lt;</a></li>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="i" begin="${beginIndex }" end="${endIndex }">
+					<c:url var="pageUrl" value="/products/add?page=${i }"/>
+					<c:choose>
+						<c:when test="${i == currentIndex }">
+							<li class="active"><a href="${pageUrl }"><c:out value="${i }"/> </a> </li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageUrl }"><c:out value="${i }"/></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${currentIndex == productPage.totalPages }">
+						<li class="disabled"><a href="#">&gt;</a> </li>
+						<li class="disabled"><a href="#">&raquo;</a> </li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${nextUrl }">&gt;</a></li>
+						<li><a href="${lastUrl }">&raquo;</a> </li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</nav>
 		<button type="button" class="btn btn-primary pull-right"
 			data-toggle="modal" data-target=".addEditModal">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
@@ -36,7 +77,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${products}" var="product" varStatus="status">
+				<c:forEach items="${productPage.content}" var="product" varStatus="status">
 					<tr>
 						<td>${product.id }</td>
 						<td>${product.code }</td>

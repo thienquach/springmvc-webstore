@@ -1,9 +1,15 @@
 package com.webstore.console.controller;
 
+import java.awt.PageAttributes;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -80,10 +86,25 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/add", method= RequestMethod.GET)
-	public String getAddNewProductForm(Model model){
+	public String getAddNewProductForm(Model model, @RequestParam(required=false, defaultValue="0") String page ){
+		Pageable pageable = new PageRequest( Math.max(0, Integer.parseInt(page) - 1), 5, Direction.DESC, "lastUpdatedDate");
+		Page<Product> productPage = productService.findAll(pageable);
+		model.addAttribute("productPage", productPage);
+		
+		int currentIndex = productPage.getNumber() + 1;
+		int beginIndex = Math.max(1, currentIndex - 5);
+		int endIndex = Math.min(beginIndex + 10, productPage.getTotalPages());
+		
+		Map<String, String> pageAtributes = new HashMap<>();
+		pageAtributes.put("currentIndex", String.valueOf(currentIndex));
+		pageAtributes.put("beginIndex", String.valueOf(beginIndex));
+		pageAtributes.put("endIndex", String.valueOf(endIndex));
+		
+		model.addAllAttributes(pageAtributes);
+		
 		Product newProduct = new Product();
 		model.addAttribute("newProduct", newProduct);
-		model.addAttribute("products", productService.findAll());
+			
 		model.addAttribute("categories", categoryService.findAll());
 		return "admin/addProduct";
 	}

@@ -12,6 +12,7 @@ import com.webstore.common.domain.Product;
 public interface ProductService {
 
 	List<Product> findAll();
+	Page<Product> findAll(Pageable pageable);
 	Product findByCode(String code);
 	List<Product> findByCategory(String category);
 	Page<Product> findByCategory(String category, Pageable pageable);

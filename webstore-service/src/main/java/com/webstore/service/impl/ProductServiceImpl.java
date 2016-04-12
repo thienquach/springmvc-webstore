@@ -1,5 +1,6 @@
 package com.webstore.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +24,10 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> findAll() {
 		return (List<Product>) productRepository.findAll();
 	}
+	
+	public Page<Product> findAll(Pageable pageable){
+		return productRepository.findAll(pageable);
+	}
 
 	public Product findByCode(String code) {
 		return productRepository.findByCode(code);
@@ -45,6 +50,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void addProduct(Product product) {
+		product.setCreatedDate(new Date(System.currentTimeMillis()));
+		product.setLastUpdatedDate(new Date(System.currentTimeMillis()));
 		productRepository.save(product);
 	}
 
