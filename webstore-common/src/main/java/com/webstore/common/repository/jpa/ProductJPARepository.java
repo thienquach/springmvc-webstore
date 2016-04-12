@@ -5,12 +5,13 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.webstore.common.domain.Product;
 
 @Repository
-public interface ProductJPARepository extends CrudRepository<Product, Long> {
+public interface ProductJPARepository extends PagingAndSortingRepository<Product, Long> {
 
 	Product findByCode(String code);
 	Page<Product> findByCategory(String category, Pageable pageable);
