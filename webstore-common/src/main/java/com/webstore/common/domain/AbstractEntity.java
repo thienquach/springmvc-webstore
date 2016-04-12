@@ -1,5 +1,8 @@
 package com.webstore.common.domain;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +18,39 @@ public class AbstractEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	private Date createdDate;
+	private Date lastUpdatedDate;
 
 	public Long getId() {
 		return id;
 	}
+	
+	
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
+
+	public Date getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+
+
+	public void setLastUpdatedDate(Date lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+
+
 
 	@Override
 	public int hashCode() {
