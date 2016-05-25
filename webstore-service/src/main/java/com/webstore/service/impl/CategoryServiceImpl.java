@@ -38,6 +38,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category findOne(Long id){
 		return categoryRepository.findOne(id);
 	}
+
+	@Override
+	public void save(Category category) {
+		categoryRepository.save(category);
+	}
 	
 
 }

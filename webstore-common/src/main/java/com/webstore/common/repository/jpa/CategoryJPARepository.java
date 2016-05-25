@@ -6,4 +6,5 @@ import com.webstore.common.domain.Category;
 
 public interface CategoryJPARepository extends CrudRepository<Category, Long>{
 
+	
 }
