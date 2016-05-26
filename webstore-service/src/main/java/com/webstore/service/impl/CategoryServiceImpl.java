@@ -22,17 +22,17 @@ public class CategoryServiceImpl implements CategoryService {
 		return (List<Category>) categoryRepository.findAll();
 	}
 
-//	@Override
-//	public Map<String, Category> getCategoryMap() {
-//		Map<String, Category> categoryMap = new HashMap<String, Category>();
-//		List<Category> categories = findAll();
-//		if(categories != null && !categories.isEmpty()){
-//			for(int i = 0; i < categories.size(); i++){
-//				categoryMap.put(categories.get(i).getName(), categories.get(i));
-//			}
-//		}
-//		return categoryMap;
-//	}
+	@Override
+	public Map<String, Category> getCategoryMap() {
+		Map<String, Category> categoryMap = new HashMap<String, Category>();
+		List<Category> categories = findAll();
+		if(categories != null && !categories.isEmpty()){
+			for(int i = 0; i < categories.size(); i++){
+				categoryMap.put(categories.get(i).getName(), categories.get(i));
+			}
+		}
+		return categoryMap;
+	}
 	
 	@Override
 	public Category findOne(Long id){
