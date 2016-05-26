@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.webstore.common.SpringDataConfig;
 import com.webstore.common.SpringJPAConfig;
@@ -31,5 +34,22 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
+	}
+	
+	@Bean(name = "tilesViewResolver")
+	public TilesViewResolver getTilesViewResolver(){
+		TilesViewResolver resolver = new TilesViewResolver();
+		resolver.setOrder(-2);
+		resolver.setViewClass(TilesView.class);
+		
+		return resolver;
+	}
+	
+	@Bean(name="tilesConfigurer")
+	public TilesConfigurer getTilesConfigurer(){
+		TilesConfigurer configurer = new TilesConfigurer();
+		configurer.setDefinitions("/WEB-INF/tiles/definitions/tile-definition.xml");
+		
+		return configurer;
 	}
 }

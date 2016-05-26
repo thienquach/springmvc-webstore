@@ -13,7 +13,7 @@
 	</definition>
 	
 	<!--  -->
-	<definition extends="baseLayout">
+	<definition name="welcome" extends="baseLayout">
 		<put-attribute name="title" value="Store"/>
 		<put-attribute name="heading" value="Welcome"/>
 		<put-attribute name="tagline" value="The one and only amazing store"/>
