@@ -57,14 +57,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> findByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findByCategory(category);
 	}
 
 	@Override
 	public List<Product> findByManufacturer(String manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findByManufacturer(manufacturer);
 	}
 	
 }

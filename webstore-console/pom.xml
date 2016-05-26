@@ -7,6 +7,7 @@
   
   <properties>
   	<spring-webmvc.version>4.0.3.RELEASE</spring-webmvc.version>
+  	<spring-security.version>4.0.3.RELEASE</spring-security.version>
   	<jstl.version>1.2</jstl.version>
   	<servlet-api.version>3.1.0</servlet-api.version>
   	<maven.compiler.source>1.8</maven.compiler.source>
@@ -45,6 +46,33 @@
   		<groupId>com.webstore</groupId>
   		<artifactId>webstore-service</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<!-- Spring Security -->
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-config</artifactId>
+  		<version>${spring-security.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-web</artifactId>
+  		<version>${spring-security.version}</version>
+  	</dependency>
+  	
+  	<!-- Apache Tile -->
+  	<dependency>
+  		<groupId>org.apache.tiles</groupId>
+  		<artifactId>tiles-extras</artifactId>
+  		<version>3.0.3</version>
+  		<scope>compile</scope>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-api</artifactId>
+  		<version>1.7.5</version>
+  		<scope>compile</scope>
   	</dependency>
   	
   </dependencies>

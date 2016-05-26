@@ -2,10 +2,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<c:url var="firstUrl" value="/products/add?page=1"/>
-<c:url var="lastUrl" value="/products/add?page=${productPage.totalPages }"/>
-<c:url var="prevUrl" value="/products/add?page=${currentIndex - 1 }"/>
-<c:url var="nextUrl" value="/products/add?page=${currentIndex + 1 }"/>
+<c:url var="firstUrl" value="/management/products?page=1"/>
+<c:url var="lastUrl" value="/management/products?page=${productPage.totalPages }"/>
+<c:url var="prevUrl" value="/management/products?page=${currentIndex - 1 }"/>
+<c:url var="nextUrl" value="/management/products?page=${currentIndex + 1 }"/>
 
 <html>
 <head>
@@ -39,7 +39,7 @@
 					</c:otherwise>
 				</c:choose>
 				<c:forEach var="i" begin="${beginIndex }" end="${endIndex }">
-					<c:url var="pageUrl" value="/products/add?page=${i }"/>
+					<c:url var="pageUrl" value="/management/products?page=${i }"/>
 					<c:choose>
 						<c:when test="${i == currentIndex }">
 							<li class="active"><a href="${pageUrl }"><c:out value="${i }"/> </a> </li>
