@@ -1,79 +1,107 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.webstore</groupId>
-  <artifactId>webstore-console</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <properties>
-  	<spring-webmvc.version>4.0.3.RELEASE</spring-webmvc.version>
-  	<spring-security.version>4.0.3.RELEASE</spring-security.version>
-  	<jstl.version>1.2</jstl.version>
-  	<servlet-api.version>3.1.0</servlet-api.version>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
-  
-  <dependencies>
-  
-  	<!-- Spring dependencies -->
-  	
-  	<!-- Spring WebMVC provides libraries for creating web -->
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-webmvc</artifactId>
-  		<version>${spring-webmvc.version}</version>
-  		<scope>compile</scope>
-  	</dependency>
-  	
-  	<!-- JSTL provides JSP tags-->
-  	<dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>jstl</artifactId>
-  		<version>${jstl.version}</version>
-  		<scope>compile</scope>
-  	</dependency>
-  	
-  	<!-- Servlet API, this no need to be compile -->
-  	<dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>javax.servlet-api</artifactId>
-  		<version>${servlet-api.version}</version>
-  		<scope>provided</scope>
-  	</dependency>
-  	
-  	<dependency>
-  		<groupId>com.webstore</groupId>
-  		<artifactId>webstore-service</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	
-  	<!-- Spring Security -->
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-config</artifactId>
-  		<version>${spring-security.version}</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-web</artifactId>
-  		<version>${spring-security.version}</version>
-  	</dependency>
-  	
-  	<!-- Apache Tile -->
-  	<dependency>
-  		<groupId>org.apache.tiles</groupId>
-  		<artifactId>tiles-extras</artifactId>
-  		<version>3.0.3</version>
-  		<scope>compile</scope>
-  	</dependency>
-  	
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-api</artifactId>
-  		<version>1.7.5</version>
-  		<scope>compile</scope>
-  	</dependency>
-  	
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.webstore</groupId>
+	<artifactId>webstore-console</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<spring-webmvc.version>4.0.3.RELEASE</spring-webmvc.version>
+		<spring-security.version>4.0.3.RELEASE</spring-security.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet-api.version>3.1.0</servlet-api.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jcl.slf4j.version>1.7.12</jcl.slf4j.version>
+		<logback.version>1.1.3</logback.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- Spring dependencies -->
+
+		<!-- Spring WebMVC provides libraries for creating web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-webmvc.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Logging -->
+		<!-- 1. Bridge logging from JCL to SLF4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${jcl.slf4j.version}</version>
+		</dependency>
+		<!-- 2. logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- JSTL provides JSP tags -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Servlet API, this no need to be compile -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.webstore</groupId>
+			<artifactId>webstore-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<!-- Apache Tile -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>jcl-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+	</dependencies>
 </project>

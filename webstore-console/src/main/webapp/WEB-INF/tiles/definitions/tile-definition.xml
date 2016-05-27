@@ -22,8 +22,15 @@
 	
 	<definition name="products" extends="baseLayout">
 		<put-attribute name="title" value="Store"/>
-		<put-attribute name="heading" value="Welcome"/>
-		<put-attribute name="tagline" value="The one and only amazing store"/>
+		<put-attribute name="heading" value="Product"/>
+		<put-attribute name="tagline" value="All available products"/>
 		<put-attribute name="content" value="/WEB-INF/views/products.jsp"/>
+	</definition>
+	
+	<definition name="management/product_management" extends="baseLayout">
+		<put-attribute name="title" value="Store"/>
+		<put-attribute name="heading" value="Product"/>
+		<put-attribute name="tagline" value="All available products"/>
+		<put-attribute name="content" value="/WEB-INF/views/management/product_management.jsp"/>
 	</definition>
 </tiles-definitions>
